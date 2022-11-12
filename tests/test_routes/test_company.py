@@ -2,6 +2,9 @@ from tests.utils.before_insert import before_insert_company
 from fastapi.testclient import TestClient
 
 
+COMPANY_ENDPOINT = "/company"
+COMPANY_SUMMARY_ENDPOINT = "/company/summary"
+
 def test_company_get_all_order_by_founded(client: TestClient):
     # ARRANGE
     before_insert_company()
@@ -10,7 +13,7 @@ def test_company_get_all_order_by_founded(client: TestClient):
     params = {"order": "founded"}
 
     # ACT
-    response = client.get('/company', params=params)
+    response = client.get(COMPANY_ENDPOINT, params=params)
     json_response = response.json()
 
     # ASSERT
@@ -28,7 +31,7 @@ def test_company_get_all_order_by_size(client: TestClient):
     params = {"order": "size"}
 
     # ACT
-    response = client.get('/company', params=params)
+    response = client.get(COMPANY_ENDPOINT, params=params)
     json_response = response.json()
 
     # ASSERT
@@ -43,7 +46,7 @@ def test_company_get_all_invalid_order(client: TestClient):
     params = {"order": "invalid"}
 
     # ACT
-    response = client.get('/company', params=params)
+    response = client.get(COMPANY_ENDPOINT, params=params)
     json_response = response.json()
     print(json_response)
 
@@ -56,7 +59,7 @@ def test_company_get_all_without_companies(client: TestClient):
     params = {"order": "founded"}
 
     # ACT
-    response = client.get('/company', params=params)
+    response = client.get(COMPANY_ENDPOINT, params=params)
     json_response = response.json()
 
     # ASSERT
@@ -72,7 +75,7 @@ def test_company_get_summary(client: TestClient):
     before_insert_company(id="id5", industry="industry2", size="11-50", founded=2001)
 
     # ACT
-    response = client.get('/company/summary')
+    response = client.get(COMPANY_SUMMARY_ENDPOINT)
     json_response = response.json()
 
     # ASSERT
@@ -83,7 +86,7 @@ def test_company_get_summary(client: TestClient):
 
 def test_company_get_summary_without_companies(client: TestClient):
     # ACT
-    response = client.get('/company/summary')
+    response = client.get(COMPANY_SUMMARY_ENDPOINT)
     json_response = response.json()
 
     # ASSERT
