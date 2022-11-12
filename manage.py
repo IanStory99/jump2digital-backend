@@ -14,7 +14,7 @@ def main():
     
     command = sys.argv[1]
     if(command == "runserver"):
-        uvicorn.run('main:app', port=5000, reload=True)
+        uvicorn.run('main:app', host="0.0.0.0", port=5000, reload=True)
     
     elif(command == "makemigrations"):
         if(len(sys.argv) < 3):
