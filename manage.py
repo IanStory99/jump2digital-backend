@@ -36,7 +36,7 @@ def main():
         if len(sys.argv) > 3:
             module = f"-v ./tests/test_routes/test_{sys.argv[2]}.py::test_{sys.argv[2]}_{sys.argv[3]}"
         os.environ["ENVIRONMENT"] = "TEST"
-        os.system(f'pytest -n auto {module}')
+        os.system(f'pytest {module}')
 
     else:
         print("No se ingresó un comando válido.")
