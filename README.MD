@@ -8,6 +8,8 @@ Proyecto de challenge de Backend para Jump 2 Digital.
 ## Descripción
 Este proyecto tiene como objetivo disponibilizar Endpoints para obtener información sobre diversas compañías, ya sea de forma ordenada o usando agregaciones.
 
+Se utiliza SQLite como base de datos para almacenar las compañias.
+
 ## API
 
 Operaciones disponibles
